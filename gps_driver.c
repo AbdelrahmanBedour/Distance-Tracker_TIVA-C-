@@ -19,6 +19,8 @@ void gps_receive_data(double* latitude_double,double* longitude_double) //return
 {
 	char lat[20];
 	char lon[20];
+	int lat_size=0;
+	int lon_size=0;
 
 	char *endp,*endp2;
 
@@ -52,6 +54,7 @@ void gps_receive_data(double* latitude_double,double* longitude_double) //return
 				while(temp != ',')
 				{
 					lat[i] = temp;
+					lat_size++;
 					i++;
 					temp = UART1_recieveByte();
 				}
@@ -69,6 +72,7 @@ void gps_receive_data(double* latitude_double,double* longitude_double) //return
 				while(temp != ',')
 				{
 					lon[i] = temp;
+					lon_size++;
 					i++;
 					temp = UART1_recieveByte();
 				}
@@ -77,7 +81,7 @@ void gps_receive_data(double* latitude_double,double* longitude_double) //return
 		}
 	}
 
-	send_to_pc(lat,lon);
+	send_to_pc(lat,lon,lat_size,lon_size);
 
 	*latitude_double = strtod(lat, &endp);
 	*longitude_double = strtod(lon, &endp2);
