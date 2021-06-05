@@ -19,6 +19,7 @@
 #include "std_types.h"
 #include "common_macros.h"
 #include "uart.h"
+#include "uart_to_pc.h"
 
 /********************************* DEFINITIONS ******************************************/
 

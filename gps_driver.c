@@ -15,7 +15,7 @@ void gps_init(void)
 	#endif
 }
 
-void gps_receive_data(double* latitude_double,double* longitude_double) //returns lat and long as doubles in degrees
+void gps_receive_data(double* latitude_double,double* longitude_double) //returns lat and long as doubles in degrees for calculations.
 {
 	char lat[20];
 	char lon[20];
@@ -76,6 +76,9 @@ void gps_receive_data(double* latitude_double,double* longitude_double) //return
 			}
 		}
 	}
+
+	send_to_pc(lat,lon);
+
 	*latitude_double = strtod(lat, &endp);
 	*longitude_double = strtod(lon, &endp2);
 
