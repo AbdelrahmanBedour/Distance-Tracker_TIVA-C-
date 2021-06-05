@@ -15,8 +15,13 @@ void gps_init(void)
 	#endif
 }
 
-void gps_receive_data(char* lat,char* lon) //latitude & longitude are arrays of char with at least 10 elements
+void gps_receive_data(double* latitude_double,double* longitude_double) //returns lat and long as doubles in degrees
 {
+	char lat[20];
+	char lon[20];
+
+	char *endp,*endp2;
+
 	char gpgll[] = {'g','p','g','l','l'};
 	while(1)
 	{
@@ -25,8 +30,7 @@ void gps_receive_data(char* lat,char* lon) //latitude & longitude are arrays of 
 		{
 			int right_string_flag=1;
 			int i;
-			for(i
-					= 0; i < 5 ; i++)
+			for(i = 0; i < 5 ; i++)
 			{
 				temp = UART1_recieveByte();
 				if(temp != gpgll[i])
@@ -72,4 +76,27 @@ void gps_receive_data(char* lat,char* lon) //latitude & longitude are arrays of 
 			}
 		}
 	}
+	*latitude_double = strtod(lat, &endp);
+	*longitude_double = strtod(lon, &endp2);
+
+	convert_to_degrees(latitude_double,longitude_double);
+}
+
+void convert_to_degrees(double* latitude,double* longitude)
+{
+	int degrees;
+	double minutes,seconds;
+
+	/*latitude conversion*/
+	degrees = (int)(*latitude/100);
+	minutes = *latitude - (double)(degrees*100);
+	seconds = minutes/60;
+	*latitude = degrees + seconds;
+
+	/*longitude conversion*/
+	degrees = (int)(*longitude/100);
+	minutes = *longitude - (double)(degrees*100);
+	seconds = minutes/60;
+	*longitude = degrees + seconds;
+
 }

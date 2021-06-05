@@ -13,6 +13,8 @@
 
 /*********************************** INCLUDES *******************************************/
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "tm4c123gh6pm_registers.h"
 #include "std_types.h"
 #include "common_macros.h"
@@ -30,6 +32,7 @@
 
 /********************************* PROTOTYPES ********************************************/
 void gps_init(void);
-void gps_receive_data(char* lat,char* lon);
+void gps_receive_data(double* lat,double* lon);
+void convert_to_degrees(double* latitude,double* longitude);
 
 #endif /* GPS_DRIVER_H_*/
