@@ -43,8 +43,8 @@ uint8 UART0_recieveByte(void)
 
 void UART1_init(void)
 {
-SYSCTL_RCGCUART_REG |= 0x0002;                                   // ACTIVATE UART1 CLOCK
-SYSCTL_REGCGC2_REG |= 0x0002;                                   // ACTIVATE CLOCK FOR PORT B
+SYSCTL_RCGCUART_REG |= 0x0002;                                       // ACTIVATE UART1 CLOCK
+SYSCTL_REGCGC2_REG |=  0x0004;                            //0b00000100      // ACTIVATE CLOCK FOR PORT C
 
 UART1_CTL_R  =0;                                           // DISBALE UART
 /* DECLARING THE BAUD RATE  */
@@ -53,10 +53,10 @@ UART1_FBRD_R = (USART_DIVFRAC_VALUE);                      //UART-_FBRD_R = 11
 UART1_LCRH_R = 0x0070;                                                                          // WLEN = 11 (DATA BITS = 8) FEN =1 (ENABLE 16 ELEMENTS IN BUFFER)
 UART1_CTL_R  = 0x0301;                                                                          // ENABLE UART , ENABLE TRANSMITTER ,ENABLE RECEIVER
                      
-GPIO_PORTB_AMSEL_REG &= ~(PORTB_PIN0_PIN1);                  // WE WANT THIS PIN DIGITAL -> GPIO_PORTA_AMSEL_REG &= ~0X03
-GPIO_PORTB_AFSEL_REG |= (PORTB_PIN0_PIN1);                   // TO ACTIVATE ALTERNATIVE FUNCTION SELECT FOR PIN0 AND PIN1
-GPIO_PORTB_PCTL_REG  |= 0X00000011;                             // CHOOSE PIN0 AND PIN1 TO BE UART0 RECEIVE AND TRANSMIT RESPECTIVELY
-GPIO_PORTB_DEN_REG |= (PORTB_PIN0_PIN1);                     // TO ENABLE PIN TO BE DIGITAL
+GPIO_PORTC_AMSEL_REG &= ~(PORTC_PIN0_PIN1);                  // WE WANT THIS PIN DIGITAL -> GPIO_PORTC_AMSEL_REG
+GPIO_PORTC_AFSEL_REG |= (PORTC_PIN0_PIN1);                   // TO ACTIVATE ALTERNATIVE FUNCTION SELECT FOR PIN4 AND PIN5
+GPIO_PORTC_PCTL_REG  |= 0X00220000;                          // CHOOSE PIN4 AND PIN5 TO BE UART1 RECEIVE AND TRANSMIT RESPECTIVELY
+GPIO_PORTC_DEN_REG |= (PORTC_PIN0_PIN1);                     // TO ENABLE PIN TO BE DIGITAL
 }
 
 

@@ -24,9 +24,9 @@
 #define  PORTA_PIN1   2
 #define  PORTA_PIN0_PIN1 3                 //0b00000011
    
-#define  PORTB_PIN0   1
-#define  PORTB_PIN1   2
-#define  PORTB_PIN0_PIN1 3               //0b00000011
+#define  PORTC_PIN0   4
+#define  PORTC_PIN1   5
+#define  PORTC_PIN0_PIN1 0x30               //0b00110000
 #define  RXFE 0x10
 #define  TXFF 0x20
    
