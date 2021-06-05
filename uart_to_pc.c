@@ -3,21 +3,17 @@
 
 
 
-void send_to_pc(char* latitude_string,char* longitude_string)
+void send_to_pc(char* latitude_string,char* longitude_string,int lat_size,int lon_size)
 {
-	int size_lat,size_long;
-	size_lat = sizeof(latitude_string)/sizeof(latitude_string[0]);
-	size_long = sizeof(longitude_string)/sizeof(longitude_string[0]);
-
 	int i;
-	for(i = 0 ; i < size_lat ; i++)
+	for(i = 0 ; i < lat_size ; i++)
 	{
 		UART0_sendByte(latitude_string[i]);
 	}
 
 	UART0_sendByte(',');
 
-	for(i = 0 ; i < size_long ; i++)
+	for(i = 0 ; i < lon_size ; i++)
 	{
 		UART0_sendByte(latitude_string[i]);
 	}

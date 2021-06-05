@@ -23,6 +23,6 @@
 
 /********************************* PROTOTYPES ********************************************/
 
-void send_to_pc(char* latitude_string,char* longitude_string);
+void send_to_pc(char* latitude_string,char* longitude_string,int lat_size,int lon_size);
 
 #endif /*UART_TO_PC_H_*/
