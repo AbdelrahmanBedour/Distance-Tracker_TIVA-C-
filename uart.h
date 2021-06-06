@@ -24,11 +24,17 @@
 #define  PORTA_PIN1   2
 #define  PORTA_PIN0_PIN1 3                 //0b00000011
    
-#define  PORTC_PIN0   4
-#define  PORTC_PIN1   5
+#define  PORTC_PIN4   4
+#define  PORTC_PIN5   5
 #define  PORTC_PIN0_PIN1 0x30               //0b00110000
+
+#define  PORTE_PIN4   4
+#define  PORTE_PIN5   5   
+#define  PORTE_PIN4_PIN5 0x30               //0b00110000
+   
 #define  RXFE 0x10
 #define  TXFF 0x20
+   
    
 /* UART Driver Baud Rate */
 #define USART_BAUDRATE 9600
