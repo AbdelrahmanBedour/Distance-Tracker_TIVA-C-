@@ -30,14 +30,14 @@
 #endif
 
 /* LCD HW Pins */
-#define RS                      4 /* PC4 */
-#define RW                      5 /* PC5 */
-#define E                       6 /* PC6 */
+#define RS                      5 /* PA5 */
+#define RW                      6 /* PA6 */
+#define E                       7 /* PA7 */
 
-#define LCD_CTRL_PORT_BASE      GPIO_PORTC_BASE_ADDRESS
-#define LCD_CTRL_PORT           GPIO_PORTC_DATA_REG
-#define LCD_CTRL_PORT_DIR       GPIO_PORTC_DIR_REG
-#define LCD_CTRL_PORT_NUM       2
+#define LCD_CTRL_PORT_BASE      GPIO_PORTA_BASE_ADDRESS
+#define LCD_CTRL_PORT           GPIO_PORTA_DATA_REG
+#define LCD_CTRL_PORT_DIR       GPIO_PORTA_DIR_REG
+#define LCD_CTRL_PORT_NUM       0
 
 #define LCD_DATA_PORT_BASE      GPIO_PORTB_BASE_ADDRESS
 #define LCD_DATA_PORT           GPIO_PORTB_DATA_REG
