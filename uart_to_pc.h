@@ -20,19 +20,9 @@
 #include "common_macros.h"
 #include "uart.h"
 
-/************************************ DEFINITIONS ****************************************/
-
-#define ARRAY_SIZE 300
 
 /********************************* PROTOTYPES ********************************************/
 
-void save_coordinates(double latitude,double longitude);
-void send_to_pc(double latitude,double longitude);
-void send_all_coordinates_to_pc(double* latitude,double* longitude);
-
-/*********************************** EXTERN **********************************************/
-
-extern double latitude_array[ARRAY_SIZE];
-extern double longitude_array[ARRAY_SIZE];
+void send_to_pc(char* latitude_string,char* longitude_string,int lat_size,int lon_size);
 
 #endif /*UART_TO_PC_H_*/

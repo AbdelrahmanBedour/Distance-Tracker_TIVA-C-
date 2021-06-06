@@ -16,19 +16,19 @@
 void LCD_init(void)
 {
 
-
-        volatile unsigned long delay;
+        
+        volatile unsigned long delay; 
         SYSCTL_REGCGC2_REG  |= (1<<LCD_CTRL_PORT_NUM) | (1<<LCD_DATA_PORT_NUM) ; /* enable DATA & CTRL clock */
         delay = SYSCTL_REGCGC2_REG ; /* delay till the clock activated */
-
+        
         *(volatile uint32 *)((volatile uint8 *)LCD_CTRL_PORT_BASE + PORT_ANALOG_MODE_SEL_REG_OFFSET) &= ~((1<<E) | (1<<RS) | (1<<RW)) ; /* Disable analog  */
         *(volatile uint32 *)((volatile uint8 *)LCD_CTRL_PORT_BASE + PORT_CTL_REG_OFFSET) &= ~((0x0000000F<<(E*4)) | (0x0000000F<<(RS*4)) | (0x0000000F<<(RW*4))); /* Normal GPIO */
-        *(volatile uint32 *)((volatile uint8 *)LCD_CTRL_PORT_BASE + PORT_ALT_FUNC_REG_OFFSET) &= ~( (1<<E) | (1<<RS) | (1<<RW)); /* NO ALT function */
+        *(volatile uint32 *)((volatile uint8 *)LCD_CTRL_PORT_BASE + PORT_ALT_FUNC_REG_OFFSET) &= ~((1<<E) | (1<<RS) | (1<<RW) ); /* NO ALT function */
         *(volatile uint32 *)((volatile uint8 *)LCD_CTRL_PORT_BASE + PORT_DIGITAL_ENABLE_REG_OFFSET) |= ((1<<E) | (1<<RS) | (1<<RW)); /* Enable the digital */
         *(volatile uint32 *)((volatile uint8 *)LCD_CTRL_PORT_BASE + PORT_PULL_UP_REG_OFFSET)  &= ~((1<<E) | (1<<RS) | (1<<RW)); /* No PullUp resis */
         *(volatile uint32 *)((volatile uint8 *)LCD_CTRL_PORT_BASE + PORT_PULL_DOWN_REG_OFFSET)  &= ~((1<<E) | (1<<RS) | (1<<RW)); /* No PullDown resis */
 	LCD_CTRL_PORT_DIR |= ( (1<<E) | (1<<RS) | (1<<RW) ); /* Configure the control pins(E,RS,RW) as output pins */
-
+	
 	#if (DATA_BITS_MODE == 4)
 		#ifdef UPPER_PORT_PINS
                         *(volatile uint32 *)((volatile uint8 *)LCD_DATA_PORT_BASE + PORT_ANALOG_MODE_SEL_REG_OFFSET) &= ~(0xF0) /* Disable analog  */
@@ -46,7 +46,7 @@ void LCD_init(void)
                         *(volatile uint32 *)((volatile uint8 *)LCD_DATA_PORT_BASE + PORT_PULL_UP_REG_OFFSET)  &= ~(0x0F); /* No PullUp resis */
                         *(volatile uint32 *)((volatile uint8 *)LCD_DATA_PORT_BASE + PORT_PULL_DOWN_REG_OFFSET)  &= ~(0x0F); /* No PullDown resis */
                         LCD_DATA_PORT_DIR |= 0x0F; /* Configure the lowest 4 bits of the data port as output pins */
-		#endif
+		#endif		 
 		LCD_sendCommand(FOUR_BITS_DATA_MODE); /* initialize LCD in 4-bit mode */
 		LCD_sendCommand(TWO_LINE_LCD_Four_BIT_MODE); /* use 2-line lcd + 4-bit Data Mode + 5*7 dot display Mode */
 	#elif (DATA_BITS_MODE == 8)
@@ -55,16 +55,14 @@ void LCD_init(void)
                 *(volatile uint32 *)((volatile uint8 *)LCD_DATA_PORT_BASE + PORT_ALT_FUNC_REG_OFFSET) &= ~(0xFF); /* NO ALT function */
                 *(volatile uint32 *)((volatile uint8 *)LCD_DATA_PORT_BASE + PORT_DIGITAL_ENABLE_REG_OFFSET) |= (0xFF); /* Enable the digital */
                 *(volatile uint32 *)((volatile uint8 *)LCD_DATA_PORT_BASE + PORT_PULL_UP_REG_OFFSET)  &= ~(0xFF); /* No PullUp resis */
-                *(volatile uint32 *)((volatile uint8 *)LCD_DATA_PORT_BASE + PORT_PULL_DOWN_REG_OFFSET)  &= ~(0xFF); /* No PullDown resis */
-		LCD_DATA_PORT_DIR = 0xFF; /* Configure the data port as output port */
+                *(volatile uint32 *)((volatile uint8 *)LCD_DATA_PORT_BASE + PORT_PULL_DOWN_REG_OFFSET)  &= ~(0xFF); /* No PullDown resis */                
+		LCD_DATA_PORT_DIR = 0xFF; /* Configure the data port as output port */ 
 		LCD_sendCommand(TWO_LINE_LCD_Eight_BIT_MODE); /* use 2-line lcd + 8-bit Data Mode + 5*7 dot display Mode */
 	#endif
-
+	
 	LCD_sendCommand(CURSOR_OFF); /* cursor off */
 	LCD_sendCommand(CLEAR_COMMAND); /* clear LCD at the beginning */
 }
-
-
 
 void LCD_sendCommand(uint8 command)
 {
