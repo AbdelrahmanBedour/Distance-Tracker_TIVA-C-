@@ -1,7 +1,12 @@
 #include "delay.h"
 
-void Delay_MS(unsigned long long n)
+void Delay_MS(uint16 n)
 {
-    volatile unsigned long long i = 0;
-    while(i++ < (NUMBER_OF_ITERATIONS_PER_ONE_MILI_SECOND * n) );
+
+  SysTick_Start(n);
+  
+  /* wait until thew COUNT flag = 1 which mean SysTick Timer reaches ZERO value */
+  while(!(SYSTICK_CTRL_REG & (1<<16))); 
+  
+  SysTick_Stop();    
 }
