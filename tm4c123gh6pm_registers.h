@@ -159,8 +159,8 @@ GPIO registers (PORTF)
 #define GPIO_PORTF_RIS_REG        (*((volatile uint32 *)0x40025414))
 #define GPIO_PORTF_ICR_REG        (*((volatile uint32 *)0x4002541C))
 
-#define SYSCTL_REGCGC2_REG        (*((volatile uint32 *)0x400FE108))
-#define SYSCTL_RCGCUART_REG              (*((volatile uint32 *)0x400FE618))                    //UART CLOCK 
+#define SYSCTL_REGCGC2_REG        (*((volatile uint32 *)0x400FE108))                         // PORT CLOCK
+#define SYSCTL_RCGCUART_REG           (*((volatile uint32 *)0x400FE618))                    //UART CLOCK 
 
 
 /*****************************************************************************
@@ -228,6 +228,34 @@ PLL Registers
 #define UART1_9BITAMASK_R       (*((volatile uint32 *)0x4000D0A8))
 #define UART1_PP_R              (*((volatile uint32 *)0x4000DFC0))
 #define UART1_CC_R              (*((volatile uint32 *)0x4000DFC8))
+
+//*****************************************************************************
+//
+// UART registers (UART5)
+//
+//*****************************************************************************
+#define UART5_DR_R              (*((volatile unsigned long *)0x40011000))
+#define UART5_RSR_R             (*((volatile unsigned long *)0x40011004))
+#define UART5_ECR_R             (*((volatile unsigned long *)0x40011004))
+#define UART5_FR_R             (*((volatile unsigned long *)0x40011018))
+#define UART5_ILPR_R           (*((volatile unsigned long *)0x40011020))
+#define UART5_IBRD_R           (*((volatile unsigned long *)0x40011024))
+#define UART5_FBRD_R            (*((volatile unsigned long *)0x40011028))
+#define UART5_LCRH_R            (*((volatile unsigned long *)0x4001102C))
+#define UART5_CTL_R             (*((volatile unsigned long *)0x40011030))
+#define UART5_IFLS_R            (*((volatile unsigned long *)0x40011034))
+#define UART5_IM_R              (*((volatile unsigned long *)0x40011038))
+#define UART5_RIS_R             (*((volatile unsigned long *)0x4001103C))
+#define UART5_MIS_R             (*((volatile unsigned long *)0x40011040))
+#define UART5_ICR_R             (*((volatile unsigned long *)0x40011044))
+#define UART5_DMACTL_R          (*((volatile unsigned long *)0x40011048))
+#define UART5_9BITADDR_R        (*((volatile unsigned long *)0x400110A4))
+#define UART5_9BITAMASK_R       (*((volatile unsigned long *)0x400110A8))
+#define UART5_PP_R              (*((volatile unsigned long *)0x40011FC0))
+#define UART5_CC_R              (*((volatile unsigned long *)0x40011FC8))
+
+/************************************************************************/
+
 
 
 /*****************************************************************************
