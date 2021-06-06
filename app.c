@@ -66,7 +66,7 @@ void GPS_Task(double*lat1,double*lng1,double*lat2,double*lng2)
 	*lat1 = strtod(lat_S, &endp);
 	*lng1 = strtod(lng_S, &endp2);
 		
-	Delay_MS(1000);
+	
 		
 	gps_receive_data(lat_S2,lng_S2);
 	*lat2 = strtod(lat_S2, &endp3);
