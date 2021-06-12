@@ -21,7 +21,7 @@
 #include "gps_driver.h"
 #include "lcd.h"
 #include "uart_to_pc.h"
-#include <cmath>
+#include <math.h>
 
 /***************************** DEFINITIONS ***********************************/
 
@@ -33,14 +33,14 @@
 /* Description: Task executes once to initialize all the Modules */
 void Init_Task(void);
 
-void GPS_Task(double*lat1,double*lng1,double*lat2,double*lng2,int* first_time_flag);
+double GPS_Task(double*lat1,double*lng1,double*lat2,double*lng2);
 
 double haversine(double lat1, double lon1, double lat2, double lon2);
 
 void LED_Task(int distance);
 
 void LCD_Task(int distance);
-
+double dist(double th1, double ph1, double th2, double ph2);
 void UART_to_PC_Task(int distance);
 
 #endif /* APP_H_ */
