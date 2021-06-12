@@ -33,9 +33,9 @@ void Os_Run(void)
 	
 	while(1)
 	{
-		GPS_Task(&lat1 , &lng1 , &lat2 , &lng2 , &first_time_flag);		
-		
-		distance += haversine(lat1 , lng1 , lat2 , lng2);
+
+                
+                distance += GPS_Task(&lat1 , &lng1 , &lat2 , &lng2);
 		
 		LCD_Task((int)distance);
 		
