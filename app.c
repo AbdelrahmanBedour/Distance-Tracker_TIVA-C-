@@ -8,8 +8,7 @@
  *
  ******************************************************************************/
 #include "app.h"
-#define R 637100
-#define TO_RAD (3.1415926536 / 180)
+
 
 /* Description: Task executes once to initialize all the Modules */
 void Init_Task(void)
