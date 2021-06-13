@@ -31,6 +31,7 @@
 #define GND_PIN (0x08) //PA3
 #define VCC_PIN (0x04) //PA2
 
+
 /********************************* PROTOTYPES ********************************************/
 void gps_init(void);
 void gps_receive_data(double* lat,double* lon);

@@ -24,7 +24,7 @@ void gps_receive_data(double* latitude_double,double* longitude_double) //return
 
 	char *endp,*endp2;
 
-	char gpgll[] = {'g','p','g','l','l'};
+	char gpgll[] = {'G','P','G','L','L'};
 	while(1)
 	{
 		char temp = UART1_recieveByte();
@@ -81,12 +81,20 @@ void gps_receive_data(double* latitude_double,double* longitude_double) //return
 		}
 	}
 
-	send_to_pc(lat,lon,lat_size,lon_size);
-
 	*latitude_double = strtod(lat, &endp);
 	*longitude_double = strtod(lon, &endp2);
 
 	convert_to_degrees(latitude_double,longitude_double);
+
+	char latitude_string_degrees[10];
+	char longitude_string_degrees[10];
+
+	snprintf(latitude_string_degrees, 10, "%f", *latitude_double);
+	snprintf(longitude_string_degrees, 10, "%f", *longitude_double);
+
+	send_to_pc(latitude_string_degrees,longitude_string_degrees);
+
+
 }
 
 void convert_to_degrees(double* latitude,double* longitude)
