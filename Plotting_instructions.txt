@@ -1,5 +1,6 @@
+-install google api or folium api package from there website
 -Store coordinates in "coordinates.txt" in the same folder containing the python plotting code.
 -coordinates should be in the form "latitude,longitude" in each row.
 -Execute the python code to generate a .html in the same folder containing plotting info.
 -Google Api -(produces)-> Gmap.html
--Folium Api -(produces)-> map.html
+-Folium Api -(produces)-> Fmap.html
