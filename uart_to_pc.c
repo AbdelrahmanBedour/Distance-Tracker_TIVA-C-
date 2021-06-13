@@ -1,21 +1,23 @@
-
 #include "uart_to_pc.h"
 
 
 
-void send_to_pc(char* latitude_string,char* longitude_string,int lat_size,int lon_size)
+void send_to_pc(char* latitude_string,char* longitude_string)
 {
-	int i;
-	for(i = 0 ; i < lat_size ; i++)
+	int i=0;
+	while(latitude_string[i] != '\0')
 	{
 		UART0_sendByte(latitude_string[i]);
+		i++;
 	}
 
 	UART0_sendByte(',');
 
-	for(i = 0 ; i < lon_size ; i++)
+	i=0;
+	while(longitude_string[i] != '\0')
 	{
-		UART0_sendByte(latitude_string[i]);
+		UART0_sendByte(longitude_string[i]);
+		i++;
 	}
 
 	UART0_sendByte('\n');
