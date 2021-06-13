@@ -68,7 +68,7 @@ double GPS_Task(double*lat1,double*lng1,double*lat2,double*lng2)
         dist5 = dist(*lat1,*lng1,*lat2,*lng2);
         gps_receive_data(lat2,lng2);
         dist3 = dist(*lat1,*lng1,*lat2,*lng2);
-        avg= (dist1+dist2+dist3+dist4+dist5)*5;
+        avg= (dist1+dist2+dist3+dist4+dist5)*4.5*1.075;
         }while(avg<1.5);
         return avg;
 
